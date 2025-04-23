@@ -1,0 +1,418 @@
+/* === Services Page Specific Styles === */
+
+/* Page Header Gradient Light */
+.bg-gradient-light {
+    background: linear-gradient(135deg, var(--white-color), var(--light-bg-color));
+}
+
+/* Services Intro Section */
+.services-intro .lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* Services Grid Section */
+.services-grid {
+    display: grid;
+    /* মোবাইলে ১ কলাম, ট্যাবলেটে ২, ডেক্সটপে ৩ */
+    grid-template-columns: 1fr;
+    gap: 2rem; /* গ্রিডের মধ্যে ফাঁক */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* Service Card Styling */
+.service-card {
+    background-color: var(--white-color);
+    padding: 2.5rem 2rem; /* ভিতরের প্যাডিং */
+    border-radius: 10px; /* গোলাকার কোণা */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* হালকা শ্যাডো */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* আইটেমগুলো উপরে নিচে সাজানো */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    height: 100%; /* গ্রিডে কার্ডগুলোর উচ্চতা সমান রাখার চেষ্টা */
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* হোভারে উপরে উঠবে */
+    box-shadow: var(--shadow-medium); /* হোভারে শ্যাডো বাড়বে */
+    border-color: var(--primary-color); /* হোভারে প্রাইমারি বর্ডার */
+}
+
+.service-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    line-height: 85px; /* আইকন ভার্টিকালি সেন্টারের জন্য সামঞ্জস্য */
+    border-radius: 50%;
+    background-color: rgba(0, 86, 179, 0.1); /* হালকা নীল */
+    color: var(--primary-color);
+    font-size: 2.5rem; /* আইকন সাইজ */
+    margin: 0 auto 1.5rem auto; /* উপরে ও নিচে মার্জিন, ডানে বামে অটো (সেন্টার) */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.service-card:hover .service-icon-wrapper {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.service-title {
+    font-size: 1.4rem;
+    color: var(--secondary-color); /* গাঢ় নীল */
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-family: var(--font-secondary);
+}
+
+.service-description {
+    font-size: 0.95rem;
+    color: var(--medium-text-color);
+    line-height: 1.7;
+    margin-bottom: 1rem; /* নিচে একটু স্পেস */
+    flex-grow: 1; /* বিবরণী অংশটুকু বাকি জায়গা নিবে */
+}
+
+.learn-more-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-top: auto; /* লিঙ্কটিকে কার্ডের নিচে ঠেলে দেবে */
+    transition: color 0.3s ease;
+}
+
+.learn-more-link:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Consultation CTA Section */
+.consultation-cta {
+    background-color: var(--primary-color);
+    color: var(--white-color); /* টেক্সট সাদা */
+}
+
+.consultation-cta h2 {
+    color: var(--white-color); /* হেডিং সাদা */
+    font-weight: 600;
+}
+
+.consultation-cta .lead {
+    color: rgba(255, 255, 255, 0.9); /* হালকা সাদা */
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Accent Button Style */
+.cta-button-accent {
+    background-color: var(--accent-color);
+    color: var(--dark-text-color);
+}
+.cta-button-accent:hover {
+     background-color: var(--accent-dark-color);
+     color: #000;
+}
+
+
+/* Responsive Adjustments for Services Page */
+@media (max-width: 767px) {
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+    .service-icon-wrapper {
+        width: 70px;
+        height: 70px;
+        line-height: 75px;
+        font-size: 2.2rem;
+    }
+    .service-title {
+        font-size: 1.3rem;
+    }
+    .service-description {
+        font-size: 0.9rem;
+    }
+    .consultation-cta h2 { font-size: 1.8rem; }
+    .consultation-cta .lead { font-size: 1rem; }
+}
+/* ======================================= */
+/* == Services Page Specific Styles == */
+/* ======================================= */
+
+/* Vibrant Gradient for Page Header */
+.bg-gradient-vibrant {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    /* background: linear-gradient(135deg, #0056b3 0%, #003366 100%); */ /* বিকল্প গাঢ় নীল গ্র্যাডিয়েন্ট */
+}
+.page-header.bg-gradient-vibrant .page-title,
+.page-header.bg-gradient-vibrant .page-subtitle {
+    color: var(--white-color);
+}
+.text-white-70 { /* হালকা সাদা টেক্সট */
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Alternative Section Title Style */
+.section-title-alt {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--dark-text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+.section-title-alt .text-primary {
+    font-weight: 600;
+}
+
+/* Services Intro Section */
+.services-intro .lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* Services Grid Section */
+.services-grid {
+    display: grid;
+    /* মোবাইলে ১ কলাম, ট্যাবলেটে ২, ডেক্সটপে ৩ */
+    grid-template-columns: 1fr;
+    gap: 2rem; /* গ্রিডের মধ্যে ফাঁক */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Service Card Styling */
+.service-card {
+    background-color: var(--white-color);
+    padding: 2.5rem 2rem; /* ভিতরের প্যাডিং */
+    border-radius: 12px; /* আরও গোলাকার */
+    border: 1px solid transparent; /* শুরুতে বর্ডার নেই */
+    box-shadow: 0 8px 25px rgba(0, 86, 179, 0.08); /* হালকা নীল শ্যাডো */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* আইটেমগুলো উপরে নিচে সাজানো */
+    position: relative; /* Pseudo element এর জন্য */
+    overflow: hidden; /* Pseudo element ক্লিপিং এর জন্য */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                background-color 0.3s ease;
+    opacity: 0; /* অ্যানিমেশনের জন্য শুরুতে অদৃশ্য */
+    transform: translateY(20px); /* অ্যানিমেশনের জন্য শুরুতে নিচে */
+    animation: fadeInUp 0.6s ease-out forwards; /* এন্ট্রি অ্যানিমেশন */
+    animation-delay: var(--delay, 0s); /* JS থেকে ডিলে আসবে */
+}
+
+/* Entry Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Applying delay from data-attribute */
+.animated-grid .service-card {
+    --delay: attr(data-delay); /* CSS ভ্যারিয়েবল এ ডিলে সেট */
+    animation-delay: var(--delay);
+}
+
+
+/* Top Border Hover Effect */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px; /* বর্ডারের উচ্চতা */
+    background-color: var(--accent-color); /* ডিফল্ট অ্যাকসেন্ট কালার */
+    transform: scaleX(0); /* শুরুতে অদৃশ্য */
+    transform-origin: left; /* বাম থেকে অ্যানিমেশন */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.service-card:hover::before {
+    transform: scaleX(1); /* হোভারে পুরো প্রস্থ জুড়ে */
+}
+
+.service-card:hover {
+    transform: translateY(-12px) scale(1.02); /* উপরে উঠবে এবং সামান্য বড় হবে */
+    box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15); /* শ্যাডো বাড়বে */
+    background-color: #fcfdff; /* হোভারে হালকা ব্যাকগ্রাউন্ড পরিবর্তন */
+}
+
+/* Unique Hover Border Colors using nth-child */
+.service-card:nth-child(6n+1):hover::before { background-color: #e67e22; } /* কমলা */
+.service-card:nth-child(6n+2):hover::before { background-color: #3498db; } /* নীল */
+.service-card:nth-child(6n+3):hover::before { background-color: #2ecc71; } /* সবুজ */
+.service-card:nth-child(6n+4):hover::before { background-color: #9b59b6; } /* বেগুনী */
+.service-card:nth-child(6n+5):hover::before { background-color: #e74c3c; } /* লাল */
+.service-card:nth-child(6n+6):hover::before { background-color: #1abc9c; } /* টিল */
+
+
+/* Icon Wrapper Styles & Colors */
+.service-icon-wrapper {
+    width: 75px;
+    height: 75px;
+    line-height: 80px;
+    border-radius: 50%;
+    font-size: 2.3rem;
+    margin: 0 auto 1.8rem auto;
+    transition: all 0.4s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-bg-color);
+    color: var(--primary-color);
+    border: 2px solid transparent;
+}
+
+/* Unique Icon Background/Border based on Style Class */
+.service-icon-wrapper.style-1 { border-color: rgba(230, 126, 34, 0.3); color: #e67e22;}
+.service-icon-wrapper.style-2 { border-color: rgba(52, 152, 219, 0.3); color: #3498db;}
+.service-icon-wrapper.style-3 { border-color: rgba(46, 204, 113, 0.3); color: #2ecc71;}
+.service-icon-wrapper.style-4 { border-color: rgba(155, 89, 182, 0.3); color: #9b59b6;}
+.service-icon-wrapper.style-5 { border-color: rgba(231, 76, 60, 0.3); color: #e74c3c;}
+.service-icon-wrapper.style-6 { border-color: rgba(26, 188, 156, 0.3); color: #1abc9c;}
+
+.service-card:hover .service-icon-wrapper {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+/* হোভারে ব্যাকগ্রাউন্ড রঙ পরিবর্তন */
+.service-card:hover .service-icon-wrapper.style-1 { background-color: #e67e22; color: white;}
+.service-card:hover .service-icon-wrapper.style-2 { background-color: #3498db; color: white;}
+.service-card:hover .service-icon-wrapper.style-3 { background-color: #2ecc71; color: white;}
+.service-card:hover .service-icon-wrapper.style-4 { background-color: #9b59b6; color: white;}
+.service-card:hover .service-icon-wrapper.style-5 { background-color: #e74c3c; color: white;}
+.service-card:hover .service-icon-wrapper.style-6 { background-color: #1abc9c; color: white;}
+
+
+.service-title {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.service-card:hover .service-title {
+    color: var(--primary-color);
+}
+
+.service-description {
+    font-size: 0.95rem;
+    color: var(--medium-text-color);
+    line-height: 1.8;
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+/* Consultation CTA v2 */
+.consultation-cta-v2 {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../images/cta-background.jpg') no-repeat center center/cover;
+    background-color: var(--secondary-color); /* Fallback */
+    color: var(--white-color);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.consultation-cta-content {
+     position: relative;
+     z-index: 2;
+}
+
+
+.cta-icon {
+    font-size: 4rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.cta-title {
+    color: var(--white-color);
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.cta-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button-light {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 0.9rem 2.2rem;
+    transition: all 0.3s ease;
+}
+.cta-button-light:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-text-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+/* Responsive Adjustments specific to Services Page */
+@media (max-width: 767px) {
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+     .service-card::before {
+        height: 4px; /* মোবাইলে বর্ডার চিকন */
+    }
+    .service-icon-wrapper {
+        width: 65px;
+        height: 65px;
+        line-height: 70px; /* Adjust if needed */
+        font-size: 2rem;
+    }
+    .service-title {
+        font-size: 1.25rem;
+    }
+    .service-description {
+        font-size: 0.9rem;
+    }
+    .consultation-cta-v2 { padding: 60px 0; }
+    .cta-icon { font-size: 3rem; }
+    .cta-title { font-size: 1.8rem; }
+    .cta-subtitle { font-size: 1rem; }
+}

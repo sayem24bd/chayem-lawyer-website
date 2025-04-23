@@ -1,0 +1,332 @@
+/* === Rulings Page Specific Styles (rulings.css) === */
+
+/* Page Header Styling */
+.page-header.rulings-header {
+    background: linear-gradient(135deg, rgba(0, 86, 179, 0.04), rgba(230, 240, 255, 0.1));
+    padding: 70px 0;
+    position: relative;
+    overflow: hidden;
+}
+.page-header.rulings-header::before { /* হেডার ব্যাকগ্রাউন্ড প্যাটার্ন (ঐচ্ছিক) */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at top right, rgba(0, 123, 255, 0.05) 0%, transparent 50%);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.page-header.rulings-header .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-header.rulings-header .header-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.page-header.rulings-header .page-title {
+    color: var(--primary-color);
+    font-size: 2.6rem;
+    font-weight: 700;
+}
+.page-header.rulings-header .page-subtitle {
+    color: var(--medium-text-color);
+    font-size: 1.15rem;
+}
+
+/* Disclaimer Section Styling */
+.bg-light-warning {
+    background-color: #fff3cd; /* হালকা হলুদ */
+    border-top: 1px solid #ffeeba;
+    border-bottom: 1px solid #ffeeba;
+}
+.disclaimer-box {
+    border: 1px solid #ffc107; /* হলুদ বর্ডার */
+    background-color: var(--white-color);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(255, 193, 7, 0.1);
+}
+.disclaimer-title {
+    color: #856404; /* গাঢ় হলুদ টেক্সট */
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+.disclaimer-title i {
+    margin-right: 0.7rem;
+    font-size: 1.2em;
+    color: #ffc107;
+}
+.disclaimer-box p {
+    color: #665120; /* কিছুটা গাঢ় টেক্সট */
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* Search and Filter Bar Styling */
+.filter-search-bar {
+    background-color: var(--white-color);
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.filter-search-bar .container {
+    display: flex;
+    flex-wrap: wrap; /* ছোট স্ক্রিনে নিচে নামবে */
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.search-wrapper {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 50px; /* গোল */
+    overflow: hidden; /* ইনপুট ও বাটন একসাথে রাখতে */
+    flex-grow: 1; /* জায়গা থাকলে বড় হবে */
+    max-width: 600px; /* সর্বোচ্চ প্রস্থ */
+    background-color: var(--white-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.search-wrapper input[type="text"] {
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    outline: none;
+    flex-grow: 1;
+    background: transparent;
+    font-family: var(--font-primary);
+    min-width: 200px; /* নূন্যতম প্রস্থ */
+}
+.search-wrapper button {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--white-color);
+    padding: 0 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+}
+.search-wrapper button:hover {
+    background-color: var(--secondary-color);
+}
+
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.filter-wrapper label {
+    font-size: 0.9rem;
+    color: var(--medium-text-color);
+    font-weight: 500;
+}
+.filter-wrapper select {
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    background-color: var(--white-color);
+    cursor: pointer;
+    min-width: 150px; /* নূন্যতম প্রস্থ */
+    font-family: var(--font-primary);
+}
+
+/* Accordion Styling */
+.rulings-accordion-container {
+    max-width: 900px; /* অ্যাকরডিয়ন কন্টেইনারের প্রস্থ */
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background-color: var(--white-color);
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.06);
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* কন্টেন্ট অ্যানিমেশনের জন্য */
+    transition: box-shadow 0.3s ease;
+}
+.accordion-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 86, 179, 0.1);
+}
+
+.accordion-header {
+    background-color: var(--white-color);
+    border: none;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem; /* বেস ফন্ট সাইজ */
+    font-family: var(--font-primary); /* পুরো হেডারে একই ফন্ট */
+    transition: background-color 0.3s ease;
+    position: relative; /* ইন্ডিকেটরের জন্য */
+}
+.accordion-header:hover {
+    background-color: #f8f9fa; /* হালকা হোভার ইফেক্ট */
+}
+
+.accordion-header .header-icon-wrapper {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    width: 30px; /* আইকনের জায়গা */
+    text-align: center;
+    flex-shrink: 0; /* ছোট হবে না */
+}
+
+.accordion-header .header-title {
+    flex-grow: 1; /* বাকি জায়গা নিবে */
+    font-weight: 600;
+    color: var(--dark-text-color);
+    font-size: 1.1rem; /* শিরোনাম একটু বড় */
+}
+
+.accordion-header .header-citation {
+    font-size: 0.85rem;
+    color: var(--light-text-color);
+    font-style: italic;
+    white-space: nowrap; /* সাইটেশন এক লাইনে রাখার চেষ্টা */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px; /* সাইটেশনের সর্বোচ্চ প্রস্থ (প্রয়োজনে অ্যাডজাস্ট করুন) */
+    flex-shrink: 0;
+}
+
+.accordion-indicator {
+    margin-left: auto; /* ডান দিকে ঠেলে দেবে */
+    font-size: 0.9rem;
+    color: var(--medium-text-color);
+    transition: transform 0.3s ease; /* অ্যানিমেশন */
+    flex-shrink: 0;
+}
+
+/* যখন অ্যাকরডিয়ন খোলা থাকবে */
+.accordion-header[aria-expanded="true"] .accordion-indicator {
+    transform: rotate(180deg);
+}
+.accordion-header[aria-expanded="true"] {
+    background-color: #f0f5fa; /* খোলা অবস্থায় হালকা ব্যাকগ্রাউন্ড */
+    border-bottom: 1px solid var(--border-color);
+}
+
+
+.accordion-content {
+    background-color: #fdfdfd; /* কন্টেন্টের সামান্য ভিন্ন ব্যাকগ্রাউন্ড */
+    overflow: hidden;
+    max-height: 0; /* ডিফল্টভাবে হাইট ০ */
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* স্মুথ অ্যানিমেশন */
+}
+/* JS দ্বারা hidden অ্যাট্রিবিউট সরানোর পর */
+.accordion-content:not([hidden]) {
+     /* max-height প্রয়োজন অনুযায়ী বাড়বে (JS দ্বারা সেট করা ভালো, অথবা বড় মান দিন) */
+     /* max-height: 1000px; */ /* উদাহরণ */
+}
+
+.accordion-content .content-inner {
+    padding: 1.5rem 2rem;
+    border-top: 1px dashed var(--border-color); /* হালকা ড্যাশড সেপারেটর */
+}
+
+.accordion-content h4 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+.accordion-content h4 i {
+    margin-right: 0.6rem;
+    font-size: 1.1em;
+}
+
+.accordion-content p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--medium-text-color);
+    margin-bottom: 1.2rem;
+}
+
+.keywords-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+.keywords-section strong {
+    font-size: 0.9rem;
+    color: var(--dark-text-color);
+    margin-right: 0.5rem;
+}
+.keyword-tag {
+    display: inline-block;
+    background-color: #e9ecef; /* হালকা ধূসর */
+    color: #495057; /* গাঢ় ধূসর */
+    padding: 0.25rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin: 0.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.keyword-tag:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+/* Responsive Adjustments for Rulings Page */
+@media (max-width: 767px) {
+    .page-header.rulings-header .page-title { font-size: 2.2rem; }
+    .page-header.rulings-header .page-subtitle { font-size: 1rem; }
+    .filter-search-bar .container { flex-direction: column; align-items: stretch; }
+    .search-wrapper { max-width: none; }
+    .filter-wrapper { justify-content: center; margin-top: 0.5rem;}
+
+    .accordion-header { flex-wrap: wrap; gap: 0.5rem; padding: 0.8rem 1rem;}
+    .accordion-header .header-title { font-size: 1rem; width: 100%; order: 1;} /* শিরোনাম উপরে */
+    .accordion-header .header-icon-wrapper { order: 2; width: auto; }
+    .accordion-header .header-citation { order: 3; max-width: none; width: 100%; font-size: 0.8rem; text-align: left; margin-top: 3px; }
+    .accordion-indicator { order: 4; margin-left: auto; padding-left: 10px; }
+    .accordion-content .content-inner { padding: 1.2rem 1rem; }
+    .keywords-section { text-align: center; }
+}
+
+/* === Rulings Page Specific Styles (rulings.css) ================================================================================================== */
+
+/* ... (আপনার আগের rulings.css এর কোড এখানে থাকবে) ... */
+
+
+/* Styling for Filter/Search Hiding */
+.accordion-item.hidden-by-filter {
+    /* display: none; */ /* সরাসরি হাইড না করে অ্যানিমেশন দেওয়া যায় */
+    opacity: 0;
+    transform: scale(0.95);
+    max-height: 0 !important; /* max-height অ্যানিমেশনকে ওভাররাইড করতে */
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    border-width: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.4s ease, margin 0.4s ease, padding 0.4s ease, border-width 0.4s ease;
+}
+
+/* Styling for No Result Message */
+.no-result-message {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8d7da; /* হালকা লাল */
+    border: 1px solid #f5c6cb;
+    color: #721c24; /* গাঢ় লাল */
+    border-radius: 5px;
+}

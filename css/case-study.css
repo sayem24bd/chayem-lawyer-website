@@ -1,0 +1,193 @@
+/* === Case Study Page Specific Styles (case-study.css) === */
+
+/* Page Header Customization */
+.page-header.case-study-header {
+    background: linear-gradient(rgba(0, 86, 179, 0.08), rgba(240, 240, 240, 0.1)), var(--light-bg-color); /* হালকা ব্যাকগ্রাউন্ড */
+    padding: 70px 0;
+}
+
+.page-header.case-study-header .page-title {
+    color: var(--secondary-color); /* গাঢ় নীল */
+}
+.page-header.case-study-header .page-subtitle {
+    color: var(--medium-text-color);
+}
+
+/* Intro Section Styling */
+.case-study-intro .intro-text-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.8;
+    color: var(--medium-text-color);
+}
+
+/* Filter Buttons (যদি ভবিষ্যতে ব্যবহার করেন) */
+.filter-buttons {
+    margin-top: 2rem;
+}
+.filter-btn {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    color: var(--medium-text-color);
+    padding: 0.5rem 1.2rem;
+    margin: 0.3rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-family: var(--font-secondary);
+}
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+}
+
+
+/* Case Study Grid */
+.case-study-grid {
+    background-color: var(--light-bg-color); /* হালকা ব্যাকগ্রাউন্ড */
+}
+
+.grid-container.case-studies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* কার্ডের নূন্যতম প্রস্থ */
+    gap: 2.5rem; /* গ্রিডের মধ্যে ফাঁক */
+}
+
+/* Case Study Card Styling */
+.case-study-card {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    overflow: hidden; /* বর্ডার রেডিয়াস ঠিক রাখার জন্য */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* আইকন ও কন্টেন্ট পাশাপাশি আনার জন্য */
+    flex-direction: column; /* ডিফল্ট কলাম ভিউ (মোবাইলের জন্য ভালো) */
+    border-left: 5px solid var(--primary-color); /* বামে অ্যাকসেন্ট বর্ডার */
+}
+
+.case-study-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* কার্ডের আইকন এলাকা */
+.card-icon-area {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 1.5rem;
+    text-align: center;
+    flex-shrink: 0; /* এটি যেন ছোট না হয় */
+}
+
+.card-icon {
+    font-size: 2.5rem;
+}
+
+/* কার্ডের মূল কন্টেন্ট */
+.card-content {
+    padding: 1.8rem;
+    flex-grow: 1; /* বাকি জায়গা পুরোটাই নিবে */
+}
+
+.card-title {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+}
+
+.case-challenge,
+.case-strategy,
+.case-outcome {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--medium-text-color);
+}
+.case-challenge strong,
+.case-strategy strong,
+.case-outcome strong {
+    color: var(--dark-text-color); /* গাঢ় টেক্সট */
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.case-outcome {
+    background-color: rgba(0, 86, 179, 0.05); /* হালকা নীল ব্যাকগ্রাউন্ড */
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    border-left: 3px solid var(--accent-color); /* ফলাফলে অ্যাকসেন্ট */
+    display: flex; /* আইকন ও টেক্সট সারিবদ্ধ করতে */
+    align-items: flex-start; /* উপরে অ্যালাইন */
+}
+
+.outcome-icon {
+    color: #28a745; /* সবুজ রঙ (সাফল্যের জন্য) */
+    font-size: 1.3em;
+    margin-right: 0.8rem;
+    margin-top: 2px; /* টেক্সটের সাথে অ্যালাইনমেন্ট ঠিক করতে */
+}
+
+/* বিস্তারিত দেখুন লিঙ্ক (যদি ব্যবহার করেন) */
+.case-study-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.case-study-link::after { /* লিঙ্কের নিচে তীর চিহ্ন */
+    content: ' →';
+    font-family: sans-serif;
+    margin-left: 4px;
+    transition: margin-left 0.3s ease;
+}
+
+.case-study-link:hover {
+    color: var(--secondary-color);
+}
+.case-study-link:hover::after {
+    margin-left: 8px; /* হোভারে তীর একটু সরবে */
+}
+
+
+/* Responsive Adjustments for Case Study Cards */
+@media (min-width: 576px) {
+    /* কার্ডের আইকন ও কন্টেন্ট পাশাপাশি */
+    /* .case-study-card {
+        flex-direction: row;
+    }
+    .card-icon-area {
+        padding: 2rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 120px;
+    }
+     .card-icon {
+         font-size: 3rem;
+     } */
+     /* উপরের কোড ব্যবহার করলে কার্ডের লেআউট ভিন্ন হবে */
+}
+
+
+@media (max-width: 767px) {
+    .grid-container.case-studies {
+        grid-template-columns: 1fr; /* মোবাইলে ১ কলাম */
+        gap: 2rem;
+    }
+    .card-title {
+        font-size: 1.3rem;
+    }
+    .case-challenge, .case-strategy, .case-outcome {
+        font-size: 0.9rem;
+    }
+}

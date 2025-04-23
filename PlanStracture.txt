@@ -1,0 +1,16 @@
+your-website-folder/
+├── css/
+│   └── style.css         # সিএসএস ফাইল
+├── js/
+│   └── script.js         # জাভাস্ক্রিপ্ট ফাইল
+├── partials/             # কমন অংশ রাখার ফোল্ডার
+│   ├── header.php        # হেডার অংশ
+│   └── footer.php        # ফুটার অংশ
+├── images/               # ছবি রাখার ফোল্ডার (ঐচ্ছিক)
+│   └── your-background-image.jpg
+├── index.php             # হোম পেজ
+├── services.php          # সেবাসমূহ পেজ
+├── faq.php               # প্রশ্নাবলী পেজ
+├── case-study.php        # কেস স্টাডি পেজ
+├── about.php             # আমাদের সম্পর্কে পেজ
+└── contact.php           # যোগাযোগ পেজ
