@@ -1,4 +1,4 @@
-/* === Rulings Page Specific Styles (rulings.css) === */
+/* === Rulings Page Specific Styles === */
 
 /* Page Header Styling */
 .page-header.rulings-header {
@@ -7,7 +7,7 @@
     position: relative;
     overflow: hidden;
 }
-.page-header.rulings-header::before { /* হেডার ব্যাকগ্রাউন্ড প্যাটার্ন (ঐচ্ছিক) */
+.page-header.rulings-header::before {
     content: '';
     position: absolute;
     top: 0;
@@ -18,19 +18,16 @@
     opacity: 0.5;
     z-index: 1;
 }
-
 .page-header.rulings-header .container {
     position: relative;
     z-index: 2;
 }
-
 .page-header.rulings-header .header-icon {
     font-size: 3.5rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
     opacity: 0.8;
 }
-
 .page-header.rulings-header .page-title {
     color: var(--primary-color);
     font-size: 2.6rem;
@@ -79,21 +76,20 @@
     padding: 30px 0;
     border-bottom: 1px solid var(--border-color);
 }
-.filter-search-bar .container {
+.filter-search-form {
     display: flex;
-    flex-wrap: wrap; /* ছোট স্ক্রিনে নিচে নামবে */
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 1.5rem;
+    align-items: center;
+    width: 100%;
 }
-
 .search-wrapper {
     display: flex;
     border: 1px solid var(--border-color);
-    border-radius: 50px; /* গোল */
-    overflow: hidden; /* ইনপুট ও বাটন একসাথে রাখতে */
-    flex-grow: 1; /* জায়গা থাকলে বড় হবে */
-    max-width: 600px; /* সর্বোচ্চ প্রস্থ */
+    border-radius: 50px;
+    overflow: hidden;
+    flex-grow: 1;
+    max-width: 600px;
     background-color: var(--white-color);
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
@@ -105,7 +101,7 @@
     flex-grow: 1;
     background: transparent;
     font-family: var(--font-primary);
-    min-width: 200px; /* নূন্যতম প্রস্থ */
+    min-width: 200px;
 }
 .search-wrapper button {
     background-color: var(--primary-color);
@@ -119,11 +115,10 @@
 .search-wrapper button:hover {
     background-color: var(--secondary-color);
 }
-
 .filter-wrapper {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 .filter-wrapper label {
     font-size: 0.9rem;
@@ -137,32 +132,46 @@
     font-size: 0.9rem;
     background-color: var(--white-color);
     cursor: pointer;
-    min-width: 150px; /* নূন্যতম প্রস্থ */
+    min-width: 150px;
     font-family: var(--font-primary);
+}
+.reset-button {
+    color: var(--medium-text-color);
+    font-size: 0.85rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+}
+.reset-button:hover {
+    color: var(--primary-color);
 }
 
 /* Accordion Styling */
 .rulings-accordion-container {
-    max-width: 900px; /* অ্যাকরডিয়ন কন্টেইনারের প্রস্থ */
+    max-width: 900px;
     margin: 0 auto;
 }
-
 .accordion-item {
     background-color: var(--white-color);
     margin-bottom: 1rem;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.06);
+    box-shadow: 0 3px 10px rgba(0, 86, 179, 0.05);
     border: 1px solid var(--border-color);
-    overflow: hidden; /* কন্টেন্ট অ্যানিমেশনের জন্য */
     transition: box-shadow 0.3s ease;
 }
 .accordion-item:hover {
-    box-shadow: 0 8px 25px rgba(0, 86, 179, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 86, 179, 0.08);
 }
-
+.accordion-item.is-open {
+    box-shadow: 0 8px 25px rgba(0, 86, 179, 0.1);
+    border-color: var(--primary-color);
+}
 .accordion-header {
     background-color: var(--white-color);
     border: none;
+    border-radius: 8px;
     padding: 1rem 1.5rem;
     width: 100%;
     text-align: left;
@@ -170,76 +179,78 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    font-size: 1rem; /* বেস ফন্ট সাইজ */
-    font-family: var(--font-primary); /* পুরো হেডারে একই ফন্ট */
-    transition: background-color 0.3s ease;
-    position: relative; /* ইন্ডিকেটরের জন্য */
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: background-color 0.3s ease, border-radius 0.1s linear 0.2s;
+    position: relative;
+    z-index: 2;
 }
 .accordion-header:hover {
-    background-color: #f8f9fa; /* হালকা হোভার ইফেক্ট */
+    background-color: #f8f9fa;
 }
-
+.accordion-item.is-open .accordion-header {
+    background-color: #f0f5fa;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid var(--border-color);
+}
 .accordion-header .header-icon-wrapper {
     color: var(--primary-color);
     font-size: 1.3rem;
-    width: 30px; /* আইকনের জায়গা */
+    width: 30px;
     text-align: center;
-    flex-shrink: 0; /* ছোট হবে না */
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
-
+.accordion-item.is-open .header-icon-wrapper {
+    transform: scale(1.1);
+}
 .accordion-header .header-title {
-    flex-grow: 1; /* বাকি জায়গা নিবে */
+    flex-grow: 1;
     font-weight: 600;
     color: var(--dark-text-color);
-    font-size: 1.1rem; /* শিরোনাম একটু বড় */
+    font-size: 1.1rem;
 }
-
+.accordion-item.is-open .header-title {
+    color: var(--primary-color);
+}
 .accordion-header .header-citation {
     font-size: 0.85rem;
     color: var(--light-text-color);
     font-style: italic;
-    white-space: nowrap; /* সাইটেশন এক লাইনে রাখার চেষ্টা */
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 200px; /* সাইটেশনের সর্বোচ্চ প্রস্থ (প্রয়োজনে অ্যাডজাস্ট করুন) */
+    max-width: 200px;
     flex-shrink: 0;
 }
-
 .accordion-indicator {
-    margin-left: auto; /* ডান দিকে ঠেলে দেবে */
+    margin-left: auto;
     font-size: 0.9rem;
     color: var(--medium-text-color);
-    transition: transform 0.3s ease; /* অ্যানিমেশন */
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     flex-shrink: 0;
 }
-
-/* যখন অ্যাকরডিয়ন খোলা থাকবে */
-.accordion-header[aria-expanded="true"] .accordion-indicator {
+.accordion-item.is-open .accordion-indicator {
     transform: rotate(180deg);
 }
-.accordion-header[aria-expanded="true"] {
-    background-color: #f0f5fa; /* খোলা অবস্থায় হালকা ব্যাকগ্রাউন্ড */
-    border-bottom: 1px solid var(--border-color);
-}
-
-
 .accordion-content {
-    background-color: #fdfdfd; /* কন্টেন্টের সামান্য ভিন্ন ব্যাকগ্রাউন্ড */
     overflow: hidden;
-    max-height: 0; /* ডিফল্টভাবে হাইট ০ */
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* স্মুথ অ্যানিমেশন */
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-in-out 0.1s, padding-top 0.5s ease, padding-bottom 0.5s ease;
+    padding-top: 0;
+    padding-bottom: 0;
 }
-/* JS দ্বারা hidden অ্যাট্রিবিউট সরানোর পর */
-.accordion-content:not([hidden]) {
-     /* max-height প্রয়োজন অনুযায়ী বাড়বে (JS দ্বারা সেট করা ভালো, অথবা বড় মান দিন) */
-     /* max-height: 1000px; */ /* উদাহরণ */
+.accordion-item.is-open .accordion-content {
+    opacity: 1;
+    visibility: visible;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
-
 .accordion-content .content-inner {
-    padding: 1.5rem 2rem;
-    border-top: 1px dashed var(--border-color); /* হালকা ড্যাশড সেপারেটর */
+    padding: 0 2rem;
 }
-
 .accordion-content h4 {
     font-size: 1.1rem;
     color: var(--primary-color);
@@ -251,14 +262,38 @@
     margin-right: 0.6rem;
     font-size: 1.1em;
 }
-
 .accordion-content p {
     font-size: 0.95rem;
     line-height: 1.8;
     color: var(--medium-text-color);
     margin-bottom: 1.2rem;
 }
-
+.content-meta.category-display {
+    font-size: 0.9rem;
+    color: var(--medium-text-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+.content-meta.category-display strong i {
+    margin-right: 0.5em;
+    color: var(--primary-color);
+}
+.content-meta a.category-link {
+    background-color: rgba(108, 117, 125, 0.1);
+    color: #495057;
+    padding: 0.2rem 0.7rem;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-left: 0.5rem;
+    border: 1px solid rgba(108, 117, 125, 0.2);
+    font-weight: 500;
+}
+.content-meta a.category-link:hover {
+    background-color: #6c757d;
+    color: var(--white-color);
+}
 .keywords-section {
     margin-top: 1.5rem;
     padding-top: 1rem;
@@ -271,62 +306,160 @@
 }
 .keyword-tag {
     display: inline-block;
-    background-color: #e9ecef; /* হালকা ধূসর */
-    color: #495057; /* গাঢ় ধূসর */
+    background-color: #e9ecef;
+    color: #495057;
     padding: 0.25rem 0.7rem;
     border-radius: 15px;
     font-size: 0.85rem;
     margin: 0.2rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 .keyword-tag:hover {
     background-color: var(--secondary-color);
     color: var(--white-color);
+    transform: scale(1.05);
+}
+.judgment-link-wrapper .judgment-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+.judgment-link-wrapper .judgment-link:hover {
+    background-color: #0056b3;
+}
+.judgment-link-wrapper .judgment-link i {
+    margin-right: 8px;
 }
 
-/* Responsive Adjustments for Rulings Page */
-@media (max-width: 767px) {
-    .page-header.rulings-header .page-title { font-size: 2.2rem; }
-    .page-header.rulings-header .page-subtitle { font-size: 1rem; }
-    .filter-search-bar .container { flex-direction: column; align-items: stretch; }
-    .search-wrapper { max-width: none; }
-    .filter-wrapper { justify-content: center; margin-top: 0.5rem;}
-
-    .accordion-header { flex-wrap: wrap; gap: 0.5rem; padding: 0.8rem 1rem;}
-    .accordion-header .header-title { font-size: 1rem; width: 100%; order: 1;} /* শিরোনাম উপরে */
-    .accordion-header .header-icon-wrapper { order: 2; width: auto; }
-    .accordion-header .header-citation { order: 3; max-width: none; width: 100%; font-size: 0.8rem; text-align: left; margin-top: 3px; }
-    .accordion-indicator { order: 4; margin-left: auto; padding-left: 10px; }
-    .accordion-content .content-inner { padding: 1.2rem 1rem; }
-    .keywords-section { text-align: center; }
-}
-
-/* === Rulings Page Specific Styles (rulings.css) ================================================================================================== */
-
-/* ... (আপনার আগের rulings.css এর কোড এখানে থাকবে) ... */
-
-
-/* Styling for Filter/Search Hiding */
-.accordion-item.hidden-by-filter {
-    /* display: none; */ /* সরাসরি হাইড না করে অ্যানিমেশন দেওয়া যায় */
-    opacity: 0;
-    transform: scale(0.95);
-    max-height: 0 !important; /* max-height অ্যানিমেশনকে ওভাররাইড করতে */
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    border-width: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.4s ease, margin 0.4s ease, padding 0.4s ease, border-width 0.4s ease;
-}
-
-/* Styling for No Result Message */
+/* No Result Message */
 .no-result-message {
     margin-top: 2rem;
-    padding: 1rem;
-    background-color: #f8d7da; /* হালকা লাল */
-    border: 1px solid #f5c6cb;
-    color: #721c24; /* গাঢ় লাল */
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border: 1px dashed var(--border-color);
+    color: var(--medium-text-color);
     border-radius: 5px;
+    text-align: center;
+}
+.no-result-message.text-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Pagination Styling */
+.pagination-wrapper {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+.pagination {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.page-item {
+    /* margin: 0 2px; */
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.6rem 1rem;
+    line-height: 1.25;
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    border: 1px solid #dee2e6;
+    border-left-width: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    text-decoration: none;
+    font-family: var(--font-secondary);
+    font-size: 0.95rem;
+}
+.page-item:first-child .page-link {
+    border-left-width: 1px;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+.page-link:hover {
+    z-index: 2;
+    color: var(--secondary-color);
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+}
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: var(--white-color);
+    border-color: #dee2e6;
+    opacity: 0.7;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .filter-search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-wrapper {
+        margin-bottom: 1rem;
+    }
+    .filter-wrapper {
+        justify-content: center;
+    }
+    .accordion-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.8rem 1rem;
+    }
+    .accordion-header .header-title {
+        font-size: 1rem;
+        width: 100%;
+        order: 1;
+    }
+    .accordion-header .header-icon-wrapper {
+        order: 2;
+        width: auto;
+        font-size: 1.1rem;
+    }
+    .accordion-header .header-citation {
+        order: 3;
+        max-width: none;
+        width: 100%;
+        font-size: 0.8rem;
+        text-align: left;
+        margin-top: 3px;
+    }
+    .accordion-indicator {
+        order: 4;
+        margin-left: auto;
+        padding-left: 10px;
+    }
+}
+@media (max-width: 576px) {
+    .page-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    .pagination-wrapper {
+        justify-content: center;
+    }
 }

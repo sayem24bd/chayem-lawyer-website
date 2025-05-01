@@ -14,3 +14,32 @@ your-website-folder/
 ├── case-study.php        # কেস স্টাডি পেজ
 ├── about.php             # আমাদের সম্পর্কে পেজ
 └── contact.php           # যোগাযোগ পেজ
+
+
+Admin Panel
+your-website-folder/
+├── admin/
+│   ├── assets/css/admin_style.css
+│   ├── includes/
+│   │   ├── header.php
+│   │   ├── footer.php
+│   │   └── functions.php # Helper ফাংশন (যেমন CSRF)
+│   ├── auth/            # লগইন সম্পর্কিত ফাইল
+│   │   ├── login.php
+│   │   ├── logout.php
+│   │   └── process_login.php
+│   ├── rulings/         # রুলিং ম্যানেজমেন্ট ফাইল
+│   │   ├── index.php      # rulings_list.php এর নতুন নাম
+│   │   ├── add.php        # ruling_add.php এর নতুন নাম
+│   │   ├── edit.php       # ruling_edit.php এর নতুন নাম
+│   │   └── delete.php     # ruling_delete.php এর নতুন নাম
+│   └── index.php          # ড্যাশবোর্ড
+├── config/
+│   └── db.php
+├── css/
+│   └── (ফ্রন্টএন্ড CSS)
+├── js/
+│   └── (ফ্রন্টএন্ড JS)
+├── partials/
+│   └── (ফ্রন্টএন্ড Partials)
+└── ... (ফ্রন্টএন্ড ফাইল)

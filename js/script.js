@@ -3,16 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- মোবাইল মেনু টগল ফাংশনালিটি ---
     const menuToggleButton = document.getElementById('mobile-menu-toggle-btn');
     const mainNav = document.getElementById('main-nav');
-
     if (menuToggleButton && mainNav) {
+       // ... (মোবাইল মেনুর আগের কোড) ...
         menuToggleButton.addEventListener('click', function() {
             mainNav.classList.toggle('active'); // Navbar এ active ক্লাস যোগ/রিমুভ
             const isExpanded = mainNav.classList.contains('active');
             menuToggleButton.setAttribute('aria-expanded', isExpanded);
             menuToggleButton.setAttribute('aria-label', isExpanded ? 'মেনু বন্ধ করুন' : 'মেনু খুলুন');
-
-            // Navbar active হলে body তে ক্লাস যোগ করা (ঐচ্ছিক, overflow 막ার জন্য)
-            // document.body.classList.toggle('mobile-nav-active', isExpanded);
         });
 
         // মেনুর বাইরে ক্লিক করলে বন্ধ করার কোড (ঐচ্ছিক)
@@ -40,89 +37,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- অ্যাকরডিয়ন ফাংশনালিটি (Rulings Page) ---
     const accordionContainer = document.querySelector('.rulings-accordion-container');
-
-    if (accordionContainer) { // নিশ্চিত করা যে আমরা rulings.php পেজে আছি
+    if (accordionContainer) {
         const accordionItems = accordionContainer.querySelectorAll('.accordion-item');
+        const closeOthers = false; // true করলে একটি খুললে বাকিগুলো বন্ধ হবে
 
-        accordionItems.forEach(item => {
-            const header = item.querySelector('.accordion-header');
+    // Function to close a specific item
+    const closeAccordionItem = (item) => {
+        const header = item.querySelector('.accordion-header');
+             const content = item.querySelector('.accordion-content');
+             if (header && content && item.classList.contains('is-open')) {
+                 item.classList.remove('is-open');
+                 header.setAttribute('aria-expanded', 'false');
+                 content.style.maxHeight = content.scrollHeight + 'px';
+                 requestAnimationFrame(() => {
+                     content.style.maxHeight = '0px';
+                     content.style.paddingTop = '0px';
+                     content.style.paddingBottom = '0px';
+                 });
+                 content.addEventListener('transitionend', () => {
+                     if (!item.classList.contains('is-open')) {
+                         content.hidden = true;
+                     }
+                 }, { once: true });
+             }
+        };
+
+    // Function to open a specific item
+    const openAccordionItem = (item) => {
+        const header = item.querySelector('.accordion-header');
             const content = item.querySelector('.accordion-content');
+            if (header && content && !item.classList.contains('is-open')) {
+                item.classList.add('is-open');
+                header.setAttribute('aria-expanded', 'true');
+                content.hidden = false;
+                const contentHeight = content.scrollHeight;
+                content.style.maxHeight = contentHeight + 'px';
+                 content.style.paddingTop = '';
+                 content.style.paddingBottom = '';
+                content.addEventListener('transitionend', () => {
+                   // if (item.classList.contains('is-open')) {
+                   //      content.style.maxHeight = 'none'; // Use with caution
+                   // }
+                }, { once: true });
+            }
+        };
 
+
+    accordionItems.forEach(item => {
+       const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
             if (header && content) {
-                // শুরুতে কন্টেন্ট হাইড আছে ও max-height 0 সেট করা (CSS transition এর জন্য)
                 content.style.maxHeight = '0px';
-                content.hidden = true; // নিশ্চিত করা যে এটি লুকানো
-                header.setAttribute('aria-expanded', 'false'); // শুরুতে এক্সপান্ডেড না
-
+                content.hidden = true;
+                header.setAttribute('aria-expanded', 'false');
                 header.addEventListener('click', () => {
-                    const isExpanded = header.getAttribute('aria-expanded') === 'true';
-
-                    if (!isExpanded) {
-                        // আইটেমটি খুলবে
-                        header.setAttribute('aria-expanded', 'true');
-                        content.hidden = false;
-                        // প্রথমে ডিসপ্লে ঠিক করে হাইট মাপা
-                        content.style.display = 'block'; // Ensure display is correct for scrollHeight calculation
-                        const contentHeight = content.scrollHeight + 'px';
-                        content.style.maxHeight = contentHeight;
-
-                        // ট্রানজিশন শেষ হলে ম্যাক্স-হাইট রিমুভ (ঐচ্ছিক, কিন্তু ভালো)
-                        content.addEventListener('transitionend', function handler() {
-                           if (content.style.maxHeight !== '0px') { // যদি এখনো খোলা থাকে
-                                content.style.maxHeight = 'none'; // 'auto' equivalent
-                           }
-                           content.removeEventListener('transitionend', handler);
-                        }, { once: true }); // একবারই রান হবে
-
-                    } else {
-                        // আইটেমটি বন্ধ হবে
-                        header.setAttribute('aria-expanded', 'false');
-                        // বন্ধ করার সময়: প্রথমে হাইট সেট করে তারপর ০ করা
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        // ছোট্ট ডিলে দিয়ে ০ করলে অ্যানিমেশন স্মুথ হয়
-                        requestAnimationFrame(() => {
-                            content.style.maxHeight = '0px';
-                        });
-
-                        // ট্রানজিশন শেষ হলে hidden=true সেট করা
-                        content.addEventListener('transitionend', function handler() {
-                           if (content.style.maxHeight === '0px') { // যদি বন্ধ হয়ে থাকে
-                                content.hidden = true;
-                                content.style.display = ''; // Reset display
-                           }
-                           content.removeEventListener('transitionend', handler);
-                        }, { once: true });
+                    const isOpen = item.classList.contains('is-open');
+                    if (closeOthers && !isOpen) {
+                        accordionItems.forEach(otherItem => { if (otherItem !== item) { closeAccordionItem(otherItem); } });
                     }
-
-                     // ঐচ্ছিক: একটি খুললে বাকিগুলো বন্ধ করা (যদি চান)
-                    /*
-                    accordionItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                             const otherHeader = otherItem.querySelector('.accordion-header');
-                             const otherContent = otherItem.querySelector('.accordion-content');
-                             if (otherHeader && otherContent && otherHeader.getAttribute('aria-expanded') === 'true') {
-                                 otherHeader.setAttribute('aria-expanded', 'false');
-                                 otherContent.style.maxHeight = otherContent.scrollHeight + 'px';
-                                 requestAnimationFrame(() => {
-                                     otherContent.style.maxHeight = '0px';
-                                 });
-                                  otherContent.addEventListener('transitionend', function handler() {
-                                    if (otherContent.style.maxHeight === '0px') {
-                                        otherContent.hidden = true;
-                                        otherContent.style.display = '';
-                                    }
-                                    otherContent.removeEventListener('transitionend', handler);
-                                  }, { once: true });
-                             }
-                        }
-                    });
-                    */
-
+                    if (!isOpen) { openAccordionItem(item); } else { closeAccordionItem(item); }
                 });
             }
         });
-    }
-
+    } // End of accordion logic
 
     // --- সার্চ ও ফিল্টার ফাংশনালিটি (Rulings Page) ---
     const searchInput = document.getElementById('rulingSearchInput');
