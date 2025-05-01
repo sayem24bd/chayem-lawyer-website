@@ -1,0 +1,675 @@
+/**
+ * admin_style.css - অ্যাডমিন প্যানেলের জন্য স্টাইলশীট
+ * এই ফাইলটি অ্যাডমিন প্যানেলের জন্য সমস্ত CSS স্টাইল সংজ্ঞায়িত করে। এটি পরিষ্কার, সহজবোধ্য এবং রক্ষণাবেক্ষণযোগ্য করার জন্য উন্নত করা হয়েছে।
+ */
+
+/* --------------------------------------------------
+   1. রুট ভেরিয়েবলস - সব থিম কালার এবং বেসিক প্রোপার্টি
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা সমস্ত রং, স্পেসিং, ফন্ট সাইজ ইত্যাদির জন্য ভেরিয়েবল সংজ্ঞায়িত করি।
+ * ভেরিয়েবলের নাম ব্র্যান্ড-নির্দিষ্ট করে পরিষ্কার করা হয়েছে যাতে এগুলোর উদ্দেশ্য স্পষ্ট হয়।
+ */
+:root {
+    /* কালার প্যালেট */
+    --color-brand-primary: #007bff; /* প্রাথমিক ব্র্যান্ড রং - প্রধান কার্যক্রমের জন্য ব্যবহৃত হয় */
+    --color-brand-primary-dark: #0056b3; /* গাঢ় প্রাথমিক ব্র্যান্ড রং - হোভার বা ফোকাসে ব্যবহৃত */
+    --color-brand-secondary: #6c757d; /* সেকেন্ডারি ব্র্যান্ড রং - গৌণ উপাদানের জন্য */
+    --color-brand-secondary-dark: #5a6268; /* গাঢ় সেকেন্ডারি রং - হোভারে গৌণ উপাদানের জন্য */
+    --color-success: #28a745; /* সাফল্যের রং - সফল অপারেশন নির্দেশ করে */
+    --color-success-light: #d4edda; /* হালকা সাফল্যের রং - ব্যাকগ্রাউন্ডে ব্যবহৃত */
+    --color-success-dark: #155724; /* গাঢ় সাফল্যের রং - টেক্সটে ব্যবহৃত */
+    --color-danger: #dc3545; /* বিপদের রং - ত্রুটি বা সতর্কতার জন্য */
+    --color-danger-light: #f8d7da; /* হালকা বিপদের রং - ব্যাকগ্রাউন্ডে */
+    --color-danger-dark: #721c24; /* গাঢ় বিপদের রং - টেক্সটে */
+    --color-warning: #ffc107; /* সতর্কতার রং - সতর্কবার্তার জন্য */
+    --color-warning-dark: #e0a800; /* গাঢ় সতর্কতার রং - হোভারে */
+    --color-info: #17a2b8; /* তথ্যের রং - তথ্যমূলক বার্তার জন্য */
+    --color-light: #f8f9fa; /* হালকা রং - হালকা ব্যাকগ্রাউন্ডে */
+    --color-dark: #343a40; /* গাঢ় রং - গাঢ় ব্যাকগ্রাউন্ডে */
+    --color-white: #ffffff; /* সাদা রং - সাধারণ ব্যাকগ্রাউন্ড বা টেক্সটে */
+    --color-muted: #6c757d; /* মিউটেড রং - কম গুরুত্বপূর্ণ টেক্সটে */
+
+    /* বর্ডার কালার */
+    --border-color: #dee2e6; /* সীমানার রং - উপাদানগুলোর সীমানা আলাদা করতে */
+
+    /* ব্যাকগ্রাউন্ড কালার */
+    --bg-light: #f4f6f9; /* হালকা ব্যাকগ্রাউন্ড - পৃষ্ঠার প্রধান ব্যাকগ্রাউন্ড */
+    --bg-dark: #1a1a1a; /* গাঢ় ব্যাকগ্রাউন্ড - ডার্ক মোডে ব্যাকগ্রাউন্ড */
+
+    /* টেক্সট কালার */
+    --text-dark: #333; /* গাঢ় টেক্সট - হালকা ব্যাকগ্রাউন্ডে পড়তে সহজ */
+    --text-light: #fff; /* হালকা টেক্সট - গাঢ় ব্যাকগ্রাউন্ডে পড়তে সহজ */
+
+    /* ইনপুট কালার */
+    --input-border: #ced4da; /* ইনপুট সীমানার রং - ফর্ম ইনপুটের সীমানা */
+
+    /* শ্যাডো */
+    --shadow-sm: 0 2px 5px rgba(0,0,0,0.1); /* ছোট ছায়া - উপাদানকে উঁচু দেখাতে */
+
+    /* স্পেসিং */
+    --spacing-xs: 0.5rem; /* অতি ছোট স্পেসিং - ছোট গ্যাপের জন্য */
+    --spacing-sm: 0.8rem; /* ছোট স্পেসিং - সাধারণ প্যাডিং বা মার্জিনে */
+    --spacing-md: 1rem; /* মাঝারি স্পেসিং - মাঝারি দূরত্বে */
+    --spacing-lg: 1.5rem; /* বড় স্পেসিং - বড় গ্যাপে */
+    --spacing-xl: 2rem; /* অতি বড় স্পেসিং - বড় উপাদানের মধ্যে দূরত্বে */
+
+    /* ফন্ট সাইজ */
+    --font-size-sm: 0.9rem; /* ছোট ফন্ট - ছোট টেক্সটে */
+    --font-size-md: 1rem; /* মাঝারি ফন্ট - সাধারণ টেক্সটে */
+    --font-size-lg: 1.4rem; /* বড় ফন্ট - শিরোনামে */
+    --font-size-xl: 1.8rem; /* অতি বড় ফন্ট - বড় শিরোনামে */
+    --font-size-xxl: 2rem; /* সবচেয়ে বড় ফন্ট - বিশেষ শিরোনামে */
+
+    /* ফন্ট ওয়েট */
+    --font-weight-medium: 500; /* মাঝারি ফন্ট ওজন - গুরুত্বপূর্ণ টেক্সটে */
+    --font-weight-bold: 600; /* ভারী ফন্ট ওজন - শিরোনাম বা জোর দেওয়ার জন্য */
+
+    /* বোর্ডার রেডিয়াস */
+    --border-radius-sm: 3px; /* ছোট বোর্ডার রেডিয়াস - ছোট বাটনে */
+    --border-radius-md: 4px; /* মাঝারি বোর্ডার রেডিয়াস - সাধারণ বাটন বা ইনপুটে */
+    --border-radius-lg: 5px; /* বড় বোর্ডার রেডিয়াস - বড় কন্টেইনারে */
+
+    /* ট্রানজিশন */
+    --transition-speed: 0.3s; /* ট্রানজিশনের গতি - মসৃণ পরিবর্তনের জন্য */
+}
+
+/* --------------------------------------------------
+   2. লেআউট কম্পোনেন্টস
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা পৃষ্ঠার মৌলিক লেআউট সংজ্ঞায়িত করি।
+ * body এবং wrapper ক্লাস দিয়ে পুরো পৃষ্ঠার গঠন তৈরি করা হয়।
+ */
+body {
+    font-family: 'Hind Siliguri', sans-serif; /* ফন্ট পরিবার - পড়তে আরামদায়ক ফন্ট */
+    margin: 0; /* মার্জিন শূন্য - ব্রাউজারের ডিফল্ট মার্জিন সরাতে */
+    background-color: var(--bg-light); /* ব্যাকগ্রাউন্ড রং - হালকা থিমে */
+    color: var(--text-dark); /* টেক্সট রং - পড়তে সহজ */
+    display: flex; /* ফ্লেক্স ডিসপ্লে - লেআউট নিয়ন্ত্রণে */
+    min-height: 100vh; /* ন্যূনতম উচ্চতা - পুরো স্ক্রিন জুড়ে */
+    flex-direction: column; /* কলাম দিক - উপর থেকে নিচে সাজানো */
+}
+
+.admin-wrapper {
+    display: flex; /* ফ্লেক্স ডিসপ্লে - উপাদান সাজানোর জন্য */
+    flex-direction: column; /* কলাম দিক - উল্লম্বভাবে সাজানো */
+    flex-grow: 1; /* ফ্লেক্স গ্রো - উপলব্ধ স্থান পূরণ করতে */
+}
+
+/* --------------------------------------------------
+   3. হেডার কম্পোনেন্ট
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা হেডারের স্টাইল সংজ্ঞায়িত করি।
+ * হেডারে লোগো এবং ইউজার তথ্য থাকে, যা পৃষ্ঠার শীর্ষে প্রদর্শিত হয়।
+ */
+.admin-header {
+    background-color: var(--color-dark); /* ব্যাকগ্রাউন্ড রং - গাঢ় থিমে */
+    color: var(--text-light); /* টেক্সট রং - গাঢ় ব্যাকগ্রাউন্ডে পড়তে সহজ */
+    padding: var(--spacing-sm) var(--spacing-lg); /* প্যাডিং - অভ্যন্তরীণ স্থান */
+}
+
+.admin-header .header-container {
+    display: flex; /* ফ্লেক্স ডিসপ্লে - উপাদান সারিবদ্ধ করতে */
+    justify-content: space-between; /* জাস্টিফাই কনটেন্ট - দুই প্রান্তে স্থান বণ্টন */
+    align-items: center; /* অ্যালাইন আইটেম - উল্লম্বভাবে কেন্দ্রে */
+}
+
+.admin-header .logo {
+    font-size: var(--font-size-lg); /* ফন্ট সাইজ - লোগো বড় করে দেখাতে */
+    font-weight: var(--font-weight-bold); /* ফন্ট ওজন - জোর দেওয়ার জন্য */
+}
+
+.admin-header .user-info a {
+    color: var(--color-warning); /* লিংক রং - সতর্কতামূলক রং ব্যবহার */
+    text-decoration: none; /* টেক্সট ডেকোরেশন - আন্ডারলাইন সরাতে */
+    transition: all var(--transition-speed) ease; /* ট্রানজিশন - মসৃণ পরিবর্তন */
+}
+
+.admin-header .user-info a:hover {
+    text-decoration: underline; /* হোভারে আন্ডারলাইন - ব্যবহারকারীর জন্য ইঙ্গিত */
+}
+
+/* --------------------------------------------------
+   4. নেভিগেশন কম্পোনেন্ট
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা নেভিগেশন মেনুর স্টাইল সংজ্ঞায়িত করি।
+ * এটি একটি অনুভূমিক মেনু যা বিভিন্ন পৃষ্ঠার লিংক ধারণ করে।
+ */
+.admin-nav {
+    background-color: var(--color-light); /* ব্যাকগ্রাউন্ড রং - হালকা থিমে */
+    padding: var(--spacing-xs) var(--spacing-lg); /* প্যাডিং - অভ্যন্তরীণ স্থান */
+    border-bottom: 1px solid var(--border-color); /* নিচের সীমানা - বিভাজনের জন্য */
+}
+
+.admin-nav ul {
+    list-style: none; /* লিস্ট স্টাইল - বুলেট সরাতে */
+    padding: 0; /* প্যাডিং - ডিফল্ট প্যাডিং সরাতে */
+    margin: 0; /* মার্জিন - ডিফল্ট মার্জিন সরাতে */
+    display: flex; /* ফ্লেক্স ডিসপ্লে - অনুভূমিকভাবে সাজানো */
+    gap: var(--spacing-lg); /* গ্যাপ - লিংকগুলোর মধ্যে দূরত্ব */
+}
+
+.admin-nav ul li a {
+    text-decoration: none; /* টেক্সট ডেকোরেশন - আন্ডারলাইন সরাতে */
+    color: var(--color-brand-secondary); /* লিংক রং - গৌণ রং ব্যবহার */
+    font-weight: var(--font-weight-medium); /* ফন্ট ওজন - পড়তে সহজ */
+    padding: var(--spacing-xs) 0; /* প্যাডিং - ক্লিক এরিয়া বাড়াতে */
+    transition: color var(--transition-speed) ease; /* ট্রানজিশন - রং পরিবর্তনে মসৃণতা */
+}
+
+.admin-nav ul li a:hover,
+.admin-nav ul li a.active {
+    color: var(--color-brand-primary); /* হোভার এবং অ্যাকটিভ রং - প্রাথমিক রং ব্যবহার */
+}
+
+/* --------------------------------------------------
+   5. মূল কন্টেন্ট এরিয়া
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা মূল কন্টেন্ট এরিয়ার স্টাইল সংজ্ঞায়িত করি।
+ * এটি পৃষ্ঠার প্রধান অংশ যেখানে সমস্ত কন্টেন্ট প্রদর্শিত হয়।
+ */
+.admin-content {
+    padding: var(--spacing-lg) var(--spacing-xl); /* প্যাডিং - অভ্যন্তরীণ স্থান */
+    flex-grow: 1; /* ফ্লেক্স গ্রো - উপলব্ধ স্থান পূরণ করতে */
+}
+
+.admin-content h1 {
+    font-size: var(--font-size-xl); /* ফন্ট সাইজ - বড় শিরোনামে */
+    margin-bottom: var(--spacing-lg); /* নিচের মার্জিন - শিরোনামের নিচে দূরত্ব */
+    color: var(--color-brand-secondary); /* রং - গৌণ রং ব্যবহার */
+    border-bottom: 1px solid var(--border-color); /* নিচের সীমানা - বিভাজনের জন্য */
+    padding-bottom: var(--spacing-xs); /* নিচের প্যাডিং - সীমানার সাথে সামঞ্জস্য */
+}
+
+/* --------------------------------------------------
+   6. টেবিল কম্পোনেন্ট
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা টেবিলের স্টাইল সংজ্ঞায়িত করি।
+ * টেবিলটি ডেটা প্রদর্শনের জন্য ব্যবহৃত হয়, যেমন তালিকা বা রিপোর্ট।
+ */
+.content-table {
+    width: 100%; /* প্রস্থ - পুরো কন্টেইনার জুড়ে */
+    border-collapse: collapse; /* সীমানা সংযোগ - ডাবল সীমানা এড়াতে */
+    margin-top: var(--spacing-lg); /* উপরের মার্জিন - উপরে দূরত্ব */
+    background-color: var(--color-white); /* ব্যাকগ্রাউন্ড রং - সাদা থিমে */
+    box-shadow: var(--shadow-sm); /* ছায়া - উঁচু দেখাতে */
+}
+
+.content-table th,
+.content-table td {
+    border: 1px solid var(--border-color); /* সীমানা - কোষ আলাদা করতে */
+    padding: var(--spacing-sm) var(--spacing-md); /* প্যাডিং - কোষের অভ্যন্তরে স্থান */
+    text-align: left; /* টেক্সট অ্যালাইনমেন্ট - বামে সারিবদ্ধ */
+    vertical-align: middle; /* উল্লম্ব অ্যালাইনমেন্ট - মাঝখানে */
+}
+
+.content-table thead th {
+    background-color: var(--color-light); /* ব্যাকগ্রাউন্ড রং - হালকা থিমে */
+    font-weight: var(--font-weight-bold); /* ফন্ট ওজন - শিরোনাম জোর দেওয়ার জন্য */
+    white-space: nowrap; /* টেক্সট মোড়ানো না - এক লাইনে রাখতে */
+}
+
+.content-table tbody tr:nth-child(even) {
+    background-color: var(--color-light); /* জোড় সারির ব্যাকগ্রাউন্ড - পড়তে সহজ */
+}
+
+.content-table tbody tr:hover {
+    background-color: #f1f1f1; /* হোভার ব্যাকগ্রাউন্ড - ব্যবহারকারীর জন্য ইঙ্গিত */
+}
+
+/* --------------------------------------------------
+   7. অ্যাকশন বাটন কম্পোনেন্টস
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা টেবিলের অ্যাকশন বাটনগুলির স্টাইল সংজ্ঞায়িত করি।
+ * এগুলো সম্পাদনা, মুছে ফেলা ইত্যাদির জন্য ব্যবহৃত হয়।
+ */
+.content-table .actions a {
+    margin-right: var(--spacing-xs); /* ডান মার্জিন - বাটনগুলোর মধ্যে দূরত্ব */
+    text-decoration: none; /* টেক্সট ডেকোরেশন - আন্ডারলাইন সরাতে */
+    padding: calc(var(--spacing-xs) / 2) var(--spacing-xs); /* প্যাডিং - ক্লিক এরিয়া */
+    border-radius: var(--border-radius-sm); /* বোর্ডার রেডিয়াস - গোলাকার প্রান্ত */
+    font-size: var(--font-size-sm); /* ফন্ট সাইজ - ছোট টেক্সটে */
+    display: inline-block; /* ডিসপ্লে - পাশাপাশি সাজানো */
+    transition: background-color var(--transition-speed) ease; /* ট্রানজিশন - মসৃণ পরিবর্তন */
+}
+
+.actions .edit-link {
+    background-color: var(--color-warning); /* সম্পাদনা লিংকের ব্যাকগ্রাউন্ড - সতর্কতার রং */
+    color: var(--text-dark); /* টেক্সট রং - পড়তে সহজ */
+}
+
+.actions .delete-link {
+    background-color: var(--color-danger); /* মুছে ফেলার ব্যাকগ্রাউন্ড - বিপদের রং */
+    color: var(--text-light); /* টেক্সট রং - গাঢ় ব্যাকগ্রাউন্ডে পড়তে সহজ */
+}
+
+.actions .edit-link:hover {
+    background-color: var(--color-warning-dark); /* হোভার ব্যাকগ্রাউন্ড - গাঢ় সতর্কতার রং */
+}
+
+.actions .delete-link:hover {
+    background-color: var(--color-danger-dark); /* হোভার ব্যাকগ্রাউন্ড - গাঢ় বিপদের রং */
+}
+
+.actions .status-active {
+    color: var(--color-success); /* সক্রিয় স্টেটাস রং - সাফল্য নির্দেশ করে */
+    font-weight: var(--font-weight-bold); /* ফন্ট ওজন - জোর দেওয়ার জন্য */
+}
+
+.actions .status-inactive {
+    color: var(--color-danger); /* নিষ্ক্রিয় স্টেটাস রং - বিপদ নির্দেশ করে */
+    font-weight: var(--font-weight-bold); /* ফন্ট ওজন - জোর দেওয়ার জন্য */
+}
+
+/* --------------------------------------------------
+   8. ফর্ম কম্পোনেন্টস
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা ফর্মের স্টাইল সংজ্ঞায়িত করি।
+ * ফর্মটি ডেটা ইনপুট এবং সম্পাদনার জন্য ব্যবহৃত হয়।
+ */
+.form-container {
+    background-color: var(--color-white); /* ব্যাকগ্রাউন্ড রং - সাদা থিমে */
+    padding: var(--spacing-xl); /* প্যাডিং - অভ্যন্তরীণ স্থান */
+    border-radius: var(--border-radius-lg); /* বোর্ডার রেডিয়াস - গোলাকার প্রান্ত */
+    box-shadow: var(--shadow-sm); /* ছায়া - উঁচু দেখাতে */
+    max-width: 800px; /* সর্বাধিক প্রস্থ - বড় স্ক্রিনে সীমাবদ্ধ */
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg); /* নিচের মার্জিন - ফর্ম উপাদানের মধ্যে দূরত্ব */
+}
+
+.form-group label {
+    display: block; /* ডিসপ্লে - লেবেল পৃথক লাইনে */
+    margin-bottom: var(--spacing-xs); /* নিচের মার্জিন - লেবেল ও ইনপুটের মধ্যে দূরত্ব */
+    font-weight: var(--font-weight-medium); /* ফন্ট ওজন - পড়তে সহজ */
+}
+
+.form-control {
+    width: 100%; /* প্রস্থ - পুরো কন্টেইনার জুড়ে */
+    padding: var(--spacing-sm) var(--spacing-md); /* প্যাডিং - টেক্সট ইনপুটে স্থান */
+    border: 1px solid var(--input-border); /* সীমানা - ইনপুট আলাদা করতে */
+    border-radius: var(--border-radius-md); /* বোর্ডার রেডিয়াস - গোলাকার প্রান্ত */
+    font-size: var(--font-size-md); /* ফন্ট সাইজ - সাধারণ টেক্সটে */
+    box-sizing: border-box; /* বক্স সাইজিং - প্যাডিং সহ প্রস্থ নির্ধারণ */
+    transition: border-color var(--transition-speed) ease; /* ট্রানজিশন - মসৃণ পরিবর্তন */
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    composes: form-control; /* form-control ক্লাস উত্তরাধিকার - কোড পুনর্ব্যবহার */
+}
+
+.form-group textarea {
+    min-height: 120px; /* ন্যূনতম উচ্চতা - টেক্সট এরিয়ার জন্য পর্যাপ্ত স্থান */
+    resize: vertical; /* রিসাইজ - শুধু উল্লম্বভাবে বড়-ছোট করা যায় */
+}
+
+.form-group input[type="checkbox"] {
+    width: auto; /* প্রস্থ - স্বাভাবিক আকারে */
+    margin-right: var(--spacing-xs); /* ডান মার্জিন - লেবেলের সাথে দূরত্ব */
+}
+
+.form-control:focus {
+    border-color: var(--color-brand-primary); /* ফোকাস সীমানার রং - ফোকাস নির্দেশ করে */
+    outline: none; /* আউটলাইন - ডিফল্ট আউটলাইন সরাতে */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* ছায়া - ফোকাসে হাইলাইট */
+}
+
+.form-actions {
+    margin-top: var(--spacing-xl); /* উপরের মার্জিন - বাটনের জন্য দূরত্ব */
+}
+
+/* --------------------------------------------------
+   9. বাটন কম্পোনেন্টস
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা বাটনগুলির স্টাইল সংজ্ঞায়িত করি।
+ * বাটনগুলো বিভিন্ন ক্রিয়া সম্পাদনের জন্য ব্যবহৃত হয়।
+ */
+.button,
+button[type="submit"] {
+    background-color: var(--color-brand-primary); /* ব্যাকগ্রাউন্ড রং - প্রাথমিক রং */
+    color: var(--text-light); /* টেক্সট রং - গাঢ় ব্যাকগ্রাউন্ডে পড়তে সহজ */
+    padding: var(--spacing-sm) var(--spacing-lg); /* প্যাডিং - ক্লিক এরিয়া */
+    border: none; /* সীমানা - সীমানা সরাতে */
+    border-radius: var(--border-radius-md); /* বোর্ডার রেডিয়াস - গোলাকার প্রান্ত */
+    font-size: var(--font-size-md); /* ফন্ট সাইজ - সাধারণ টেক্সটে */
+    cursor: pointer; /* কার্সর - ক্লিকযোগ্য নির্দেশ করে */
+    transition: background-color var(--transition-speed) ease; /* ট্রানজিশন - মসৃণ পরিবর্তন */
+    text-decoration: none; /* টেক্সট ডেকোরেশন - আন্ডারলাইন সরাতে */
+    display: inline-block; /* ডিসপ্লে - পাশাপাশি সাজানো */
+}
+
+.button:hover,
+button[type="submit"]:hover {
+    background-color: var(--color-brand-primary-dark); /* হোভার ব্যাকগ্রাউন্ড - গাঢ় প্রাথমিক রং */
+}
+
+.button-secondary {
+    background-color: var(--color-brand-secondary); /* সেকেন্ডারি বাটন ব্যাকগ্রাউন্ড - গৌণ রং */
+}
+
+.button-secondary:hover {
+    background-color: var(--color-brand-secondary-dark); /* হোভার ব্যাকগ্রাউন্ড - গাঢ় গৌণ রং */
+}
+
+/* --------------------------------------------------
+   10. মেসেজ/নোটিফিকেশন কম্পোনেন্টস
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা মেসেজ এবং নোটিফিকেশনের স্টাইল সংজ্ঞায়িত করি।
+ * এগুলো ব্যবহারকারীকে তথ্য বা সতর্কতা প্রদানের জন্য ব্যবহৃত হয়।
+ */
+.message {
+    padding: var(--spacing-md); /* প্যাডিং - অভ্যন্তরীণ স্থান */
+    margin-bottom: var(--spacing-lg); /* নিচের মার্জিন - পরবর্তী উপাদানের সাথে দূরত্ব */
+    border-radius: var(--border-radius-md); /* বোর্ডার রেডিয়াস - গোলাকার প্রান্ত */
+    border: 1px solid transparent; /* সীমানা - ডিফল্টে স্বচ্ছ */
+}
+
+.message.success {
+    color: var(--color-success-dark); /* সাফল্য মেসেজ রং - গাঢ় সাফল্যের রং */
+    background-color: var(--color-success-light); /* ব্যাকগ্রাউন্ড - হালকা সাফল্যের রং */
+    border-color: var(--color-success-light); /* সীমানার রং - ব্যাকগ্রাউন্ডের সাথে মিল */
+}
+
+.message.error {
+    color: var(--color-danger-dark); /* ত্রুটি মেসেজ রং - গাঢ় বিপদের রং */
+    background-color: var(--color-danger-light); /* ব্যাকগ্রাউন্ড - হালকা বিপদের রং */
+    border-color: var(--color-danger-light); /* সীমানার রং - ব্যাকগ্রাউন্ডের সাথে মিল */
+}
+
+/* --------------------------------------------------
+   11. ফুটার কম্পোনেন্ট
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা ফুটারের স্টাইল সংজ্ঞায়িত করি।
+ * ফুটারে কপিরাইট তথ্য বা অন্যান্য তথ্য প্রদর্শিত হয়।
+ */
+.admin-footer {
+    background-color: var(--color-light); /* ব্যাকগ্রাউন্ড রং - হালকা থিমে */
+    color: var(--color-muted); /* টেক্সট রং - কম গুরুত্বপূর্ণ টেক্সটে */
+    text-align: center; /* টেক্সট অ্যালাইনমেন্ট - কেন্দ্রে */
+    padding: var(--spacing-md); /* প্যাডিং - অভ্যন্তরীণ স্থান */
+    margin-top: auto; /* উপরের মার্জিন - নিচে স্থাপনের জন্য */
+    border-top: 1px solid var(--border-color); /* উপরের সীমানা - বিভাজনের জন্য */
+    font-size: var(--font-size-sm); /* ফন্ট সাইজ - ছোট টেক্সটে */
+}
+
+/* --------------------------------------------------
+   12. ড্যাশবোর্ড কম্পোনেন্টস
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা ড্যাশবোর্ডের স্ট্যাটস কার্ডগুলির স্টাইল সংজ্ঞায়িত করি।
+ * এগুলো বিভিন্ন পরিসংখ্যান বা তথ্য প্রদর্শনের জন্য ব্যবহৃত হয়।
+ */
+.dashboard-stats {
+    display: flex; /* ফ্লেক্স ডিসপ্লে - কার্ডগুলো পাশাপাশি সাজানো */
+    gap: var(--spacing-lg); /* গ্যাপ - কার্ডগুলোর মধ্যে দূরত্ব */
+    margin-top: var(--spacing-xl); /* উপরের মার্জিন - উপরে দূরত্ব */
+    flex-wrap: wrap; /* ফ্লেক্স মোড়ানো - ছোট স্ক্রিনে নিচে নামতে */
+}
+
+.stat-card {
+    background-color: var(--color-white); /* ব্যাকগ্রাউন্ড রং - সাদা থিমে */
+    padding: var(--spacing-lg); /* প্যাডিং - অভ্যন্তরীণ স্থান */
+    border-radius: var(--border-radius-lg); /* বোর্ডার রেডিয়াস - গোলাকার প্রান্ত */
+    box-shadow: var(--shadow-sm); /* ছায়া - উঁচু দেখাতে */
+    text-align: center; /* টেক্সট অ্যালাইনমেন্ট - কেন্দ্রে */
+    flex: 1; /* ফ্লেক্স - উপলব্ধ স্থান ভাগ করে নেয় */
+    min-width: 180px; /* ন্যূনতম প্রস্থ - ছোট স্ক্রিনে পড়তে সহজ */
+    border-left: 4px solid var(--color-brand-primary); /* বাম সীমানা - রঙিন হাইলাইট */
+    transition: transform var(--transition-speed) ease; /* ট্রানজিশন - মসৃণ পরিবর্তন */
+}
+
+.stat-card:hover {
+    transform: translateY(-3px); /* হোভারে উপরে উঠা - ব্যবহারকারীর জন্য ইঙ্গিত */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* হোভার ছায়া - গভীরতা বাড়াতে */
+}
+
+.stat-card h3 {
+    margin-top: 0; /* উপরের মার্জিন - ডিফল্ট মার্জিন সরাতে */
+    font-size: var(--font-size-md); /* ফন্ট সাইজ - সাধারণ শিরোনামে */
+    color: var(--color-muted); /* রং - কম গুরুত্বপূর্ণ টেক্সটে */
+    margin-bottom: var(--spacing-xs); /* নিচের মার্জিন - পরবর্তী টেক্সটের সাথে দূরত্ব */
+}
+
+.stat-card p {
+    font-size: var(--font-size-xxl); /* ফন্ট সাইজ - বড় টেক্সটে */
+    font-weight: var(--font-weight-bold); /* ফন্ট ওজন - জোর দেওয়ার জন্য */
+    margin: var(--spacing-xs) 0; /* মার্জিন - উপরে-নিচে দূরত্ব */
+    color: var(--text-dark); /* রং - পড়তে সহজ */
+}
+
+.stat-card a {
+    color: var(--color-brand-primary); /* লিংক রং - প্রাথমিক রং */
+    text-decoration: none; /* টেক্সট ডেকোরেশন - আন্ডারলাইন সরাতে */
+    font-size: var(--font-size-sm); /* ফন্ট সাইজ - ছোট টেক্সটে */
+    font-weight: var(--font-weight-medium); /* ফন্ট ওজন - পড়তে সহজ */
+    margin-top: var(--spacing-xs); /* উপরের মার্জিন - উপরে দূরত্ব */
+    display: inline-block; /* ডিসপ্লে - পাশাপাশি সাজানো */
+    transition: color var(--transition-speed) ease; /* ট্রানজিশন - মসৃণ পরিবর্তন */
+}
+
+.stat-card a:hover {
+    text-decoration: underline; /* হোভারে আন্ডারলাইন - ব্যবহারকারীর জন্য ইঙ্গিত */
+}
+
+.dashboard-stats .stat-card:nth-child(1) {
+    border-left-color: var(--color-brand-primary); /* প্রথম কার্ডের সীমানার রং - প্রাথমিক রং */
+}
+
+.dashboard-stats .stat-card:nth-child(2) {
+    border-left-color: var(--color-warning); /* দ্বিতীয় কার্ডের সীমানার রং - সতর্কতার রং */
+}
+
+.dashboard-stats .stat-card:nth-child(3) {
+    border-left-color: var(--color-success); /* তৃতীয় কার্ডের সীমানার রং - সাফল্যের রং */
+}
+
+.dashboard-stats .stat-card:nth-child(4) {
+    border-left-color: var(--color-info); /* চতুর্থ কার্ডের সীমানার রং - তথ্যের রং */
+}
+
+/* --------------------------------------------------
+   13. কুইক লিংকস
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা কুইক লিংকগুলির স্টাইল সংজ্ঞায়িত করি।
+ * এগুলো দ্রুত অ্যাক্সেসের জন্য বিভিন্ন পৃষ্ঠার লিংক প্রদান করে।
+ */
+.quick-links {
+    list-style: none; /* লিস্ট স্টাইল - বুলেট সরাতে */
+    padding: 0; /* প্যাডিং - ডিফল্ট প্যাডিং সরাতে */
+    margin-top: var(--spacing-xl); /* উপরের মার্জিন - উপরে দূরত্ব */
+    display: flex; /* ফ্লেক্স ডিসপ্লে - অনুভূমিকভাবে সাজানো */
+    gap: var(--spacing-md); /* গ্যাপ - লিংকগুলোর মধ্যে দূরত্ব */
+    flex-wrap: wrap; /* ফ্লেক্স মোড়ানো - ছোট স্ক্রিনে নিচে নামতে */
+}
+
+.quick-links .button i {
+    margin-right: var(--spacing-xs); /* আইকনের ডান মার্জিন - টেক্সটের সাথে দূরত্ব */
+}
+
+/* --------------------------------------------------
+   14. থিম মোড (লাইট/ডার্ক)
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা লাইট এবং ডার্ক মোডের জন্য স্টাইল সংজ্ঞায়িত করি।
+ * ব্যবহারকারীকে থিম পরিবর্তনের সুবিধা দেওয়া হয়।
+ */
+[data-theme="light"] {
+    --bg-color: var(--color-white); /* ব্যাকগ্রাউন্ড রং - লাইট মোডে সাদা */
+    --text-color: var(--text-dark); /* টেক্সট রং - পড়তে সহজ */
+    --header-bg: var(--color-light); /* হেডার ব্যাকগ্রাউন্ড - হালকা থিমে */
+    --input-bg: var(--color-white); /* ইনপুট ব্যাকগ্রাউন্ড - সাদা থিমে */
+    --input-border: var(--border-color); /* ইনপুট সীমানার রং - হালকা সীমানা */
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--bg-dark); /* ব্যাকগ্রাউন্ড রং - ডার্ক মোডে গাঢ় */
+    --text-color: var(--text-light); /* টেক্সট রং - গাঢ় ব্যাকগ্রাউন্ডে পড়তে সহজ */
+    --header-bg: #2d2d2d; /* হেডার ব্যাকগ্রাউন্ড - গাঢ় ধূসর */
+    --input-bg: #333333; /* ইনপুট ব্যাকগ্রাউন্ড - গাঢ় থিমে */
+    --input-border: #444444; /* ইনপুট সীমানার রং - গাঢ় সীমানা */
+}
+
+body {
+    background-color: var(--bg-color); /* ব্যাকগ্রাউন্ড রং - থিম অনুযায়ী পরিবর্তন */
+    color: var(--text-color); /* টেক্সট রং - থিম অনুযায়ী পরিবর্তন */
+}
+
+.admin-header {
+    background-color: var(--header-bg); /* হেডার ব্যাকগ্রাউন্ড - থিম অনুযায়ী */
+    border-bottom: 1px solid var(--input-border); /* নিচের সীমানা - থিম অনুযায়ী */
+}
+
+.admin-nav a {
+    color: var(--text-color); /* লিংক রং - থিম অনুযায়ী পরিবর্তন */
+}
+
+input, textarea, select {
+    background-color: var(--input-bg); /* ইনপুট ব্যাকগ্রাউন্ড - থিম অনুযায়ী */
+    color: var(--text-color); /* টেক্সট রং - থিম অনুযায়ী */
+    border-color: var(--input-border); /* সীমানার রং - থিম অনুযায়ী */
+}
+
+/* --------------------------------------------------
+   15. মডার্ন ডিজাইন এলিমেন্টস
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা আধুনিক ডিজাইনের উপাদানগুলির স্টাইল সংজ্ঞায়িত করি।
+ * এটি ইউজার ইন্টারফেসকে আরও আকর্ষণীয় করে।
+ */
+.modern-design {
+    background: var(--input-bg); /* ব্যাকগ্রাউন্ড - থিম অনুযায়ী */
+    color: var(--text-color); /* টেক্সট রং - থিম অনুযায়ী */
+}
+
+.modern-input {
+    background: var(--input-bg); /* ব্যাকগ্রাউন্ড - থিম অনুযায়ী */
+    color: var(--text-color); /* টেক্সট রং - থিম অনুযায়ী */
+    border: 2px solid var(--input-border); /* সীমানা - আধুনিক চেহারার জন্য */
+    border-radius: var(--border-radius-md); /* বোর্ডার রেডিয়াস - গোলাকার প্রান্ত */
+    transition: all var(--transition-speed) ease; /* ট্রানজিশন - মসৃণ পরিবর্তন */
+}
+
+.modern-input:focus {
+    border-color: var(--color-brand-primary); /* ফোকাস সীমানার রং - প্রাথমিক রং */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* ছায়া - ফোকাসে হাইলাইট */
+}
+
+/* --------------------------------------------------
+   16. রেসপন্সিভ ডিজাইন
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা ছোট স্ক্রিনের জন্য স্টাইল সংজ্ঞায়িত করি।
+ * মিডিয়া কোয়েরি ব্যবহার করে রেসপন্সিভনেস নিশ্চিত করা হয়।
+ */
+@media (max-width: 768px) {
+    .admin-header .header-container {
+        flex-direction: column; /* কলাম দিক - ছোট স্ক্রিনে উল্লম্ব সাজানো */
+        gap: var(--spacing-xs); /* গ্যাপ - উপাদানের মধ্যে দূরত্ব */
+    }
+
+    .admin-nav ul {
+        flex-wrap: wrap; /* ফ্লেক্স মোড়ানো - লিংকগুলো নিচে নামতে */
+        gap: var(--spacing-md); /* গ্যাপ - লিংকগুলোর মধ্যে দূরত্ব */
+    }
+
+    .admin-content {
+        padding: var(--spacing-md); /* প্যাডিং - ছোট স্ক্রিনে কম স্থান */
+    }
+
+    .admin-content h1 {
+        font-size: var(--font-size-lg); /* ফন্ট সাইজ - ছোট শিরোনাম */
+    }
+
+    .content-table {
+        font-size: var(--font-size-sm); /* ফন্ট সাইজ - ছোট টেক্সটে */
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: var(--spacing-xs) var(--spacing-sm); /* প্যাডিং - কম স্থান */
+    }
+
+    .dashboard-stats {
+        flex-direction: column; /* কলাম দিক - কার্ডগুলো উল্লম্বভাবে */
+    }
+
+    .stat-card {
+        width: 100%; /* প্রস্থ - পুরো স্ক্রিন জুড়ে */
+    }
+}
+
+/* --------------------------------------------------
+   17. অ্যানিমেশন এবং ট্রানজিশন
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা অ্যানিমেশন এবং ট্রানজিশন সংজ্ঞায়িত করি।
+ * এটি ইউজার ইন্টারফেসকে আরও জীবন্ত করে।
+ */
+@keyframes fadeIn {
+    from { opacity: 0; } /* শুরুতে অদৃশ্য */
+    to { opacity: 1; } /* শেষে দৃশ্যমান */
+}
+
+.fade-in {
+    animation: fadeIn var(--transition-speed) ease-in; /* ফেইড-ইন অ্যানিমেশন - মসৃণ প্রকাশ */
+}
+
+.hover-lift {
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* ট্রানজিশন - উঠা এবং ছায়া */
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px); /* হোভারে উপরে উঠা - ইঙ্গিত */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* হোভার ছায়া - গভীরতা */
+}
+
+/* --------------------------------------------------
+   18. অ্যাক্সেসিবিলিটি ইন্হ্যান্সমেন্ট
+   -------------------------------------------------- */
+/**
+ * এই বিভাগে, আমরা অ্যাক্সেসিবিলিটি উন্নত করার জন্য স্টাইল সংজ্ঞায়িত করি।
+ * কীবোর্ড এবং স্ক্রিন রিডার ব্যবহারকারীদের জন্য উন্নতি করা হয়।
+ */
+:focus {
+    outline: 3px solid rgba(0, 123, 255, 0.5); /* আউটলাইন - ফোকাসে দৃশ্যমান */
+    outline-offset: 2px; /* আউটলাইন দূরত্ব - উপাদান থেকে বাইরে */
+}
+
+.visually-hidden {
+    position: absolute; /* পজিশন - স্ক্রিনে দৃশ্যমান নয় */
+    width: 1px; /* প্রস্থ - অদৃশ্য */
+    height: 1px; /* উচ্চতা - অদৃশ্য */
+    padding: 0; /* প্যাডিং - শূন্য */
+    margin: -1px; /* মার্জিন - স্ক্রিনের বাইরে */
+    overflow: hidden; /* ওভারফ্লো - লুকানো */
+    clip: rect(0, 0, 0, 0); /* ক্লিপ - দৃশ্যমান এলাকা শূন্য */
+    white-space: nowrap; /* টেক্সট মোড়ানো না - এক লাইনে */
+    border: 0; /* সীমানা - শূন্য */
+}
+
+.sr-only {
+    position: absolute; /* পজিশন - স্ক্রিনে দৃশ্যমান নয় */
+    width: 1px; /* প্রস্থ - অদৃশ্য */
+    height: 1px; /* উচ্চতা - অদৃশ্য */
+    padding: 0; /* প্যাডিং - শূন্য */
+    margin: -1px; /* মার্জিন - স্ক্রিনের বাইরে */
+    overflow: hidden; /* ওভারফ্লো - লুকানো */
+    clip: rect(0, 0, 0, 0); /* ক্লিপ - দৃশ্যমান এলাকা শূন্য */
+    white-space: nowrap; /* টেক্সট মোড়ানো না - এক লাইনে */
+    border-width: 0; /* সীমানার প্রস্থ - শূন্য */
+}
